@@ -1,0 +1,46 @@
+
+drop table reservations;
+drop table billings;
+drop table rooms;
+drop table bookings;
+
+CREATE TABLE Reservations (
+    ReservationId integer PRIMARY KEY autoincrement,
+    Check_in_date DATE,
+    Check_out_date DATE,
+    Room_preference VARCHAR(50),
+    Name VARCHAR(100),
+    Contact VARCHAR(50)
+);
+
+CREATE TABLE Billings (
+    BillingId integer PRIMARY KEY,
+    RoomCharges DOUBLE,
+    AdditionalServices DOUBLE,
+    TotalCharges DOUBLE,
+    FOREIGN KEY (BillingId) REFERENCES reservations (ReservationId)
+);
+
+
+CREATE TABLE Rooms (
+    RoomNumber integer PRIMARY KEY autoincrement,
+    Preference VARCHAR(50),
+    Check_in_date DATE,
+    Check_out_date DATE
+);
+
+CREATE TABLE Bookings (
+    ReservationId INT PRIMARY KEY,
+    CheckInDate DATE,
+    CheckOutDate DATE,
+    RoomNumber INT,
+    Bill DOUBLE,
+    BookingDate DATE
+);
+
+
+select * from Reservations;
+select * from billings;
+
+select * from bookings;
+select * from rooms;

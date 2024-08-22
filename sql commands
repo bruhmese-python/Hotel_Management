@@ -1,0 +1,64 @@
+CREATE TABLE Customers (
+    CustomerId VARCHAR(50) PRIMARY KEY,
+    CustomerName VARCHAR(100),
+    Email VARCHAR(100),
+    MobileNo VARCHAR(15),
+    Address VARCHAR(255),
+    Password VARCHAR(100)
+);
+
+
+
+CREATE TABLE Admins (
+    UserId VARCHAR(50) PRIMARY KEY,
+    Password1 VARCHAR(100)
+);
+
+CREATE TABLE Reservations (
+    ReservationId INT PRIMARY KEY,
+    Check_in_date DATE,
+    Check_out_date DATE,
+    Room_preference VARCHAR(50),
+    Name VARCHAR(100),
+    Contact VARCHAR(50)
+);
+
+CREATE TABLE Billings (
+    BillingId VARCHAR(50) PRIMARY KEY,
+    RoomCharges DOUBLE,
+    AdditionalServices DOUBLE,
+    TotalCharges DOUBLE
+);
+CREATE TABLE Bookings (
+    ReservationId INT PRIMARY KEY,
+    CheckInDate DATE,
+    CheckOutDate DATE,
+    RoomNumber INT,
+    Bill DOUBLE,
+    BookingDate DATE
+);
+
+
+CREATE TABLE Rooms (
+    RoomNumber INT PRIMARY KEY,
+    Preference VARCHAR(50),
+    Check_in_date DATE,
+    Check_out_date DATE
+);
+
+CREATE TABLE Payments (
+    Transaction_id VARCHAR(50) PRIMARY KEY,
+    Customer_id VARCHAR(50),
+    Bill_amount DOUBLE,
+    Payment_mode VARCHAR(50),
+    Card_number VARCHAR(20),
+    Card_holder_name VARCHAR(100),
+    Expiry_date VARCHAR(10),
+    CVV VARCHAR(4),
+    FOREIGN KEY (Customer_id) REFERENCES Customers(CustomerId)
+);
+
+
+insert into Admins Values ("Admin@123","Admin@1402");
+
+select *from Bookings;
